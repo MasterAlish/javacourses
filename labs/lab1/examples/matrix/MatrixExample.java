@@ -47,11 +47,13 @@ public class MatrixExample {
     }
 
     private int[][] sumMatrixes(int[][] matrix1, int[][] matrix2) {
-        int[][] sum = new int[matrix1.length][]; // создаем новый массив массивов без внутренних массивов
+        int lenY = Math.min(matrix1.length, matrix2.length);
+        int lenX = Math.min(matrix1[0].length, matrix2[0].length);
+        int[][] sum = new int[lenY][]; // создаем новый массив массивов без внутренних массивов
 
-        for(int j=0;j<sum.length;j++){           // повторяем для каждой строчки нового массива
-            sum[j] = new int[matrix1[j].length]; // создаем новые массивы для каждой строчки
-            for(int i=0; i<sum[j].length; i++){  // повторяем для каждого элемента внутреннего массива
+        for(int j=0;j<lenY;j++){           // повторяем для каждой строчки нового массива
+            sum[j] = new int[lenX]; // создаем новые массивы для каждой строчки
+            for(int i=0; i<lenX; i++){  // повторяем для каждого элемента внутреннего массива
                 sum[j][i] = matrix1[j][i]+matrix2[j][i];  // суммируем элементы под индексом i,j двух матриц
             }
         }

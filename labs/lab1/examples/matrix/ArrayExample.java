@@ -39,7 +39,12 @@ public class ArrayExample {
     }
 
     private int[] sumArrays(int[]  array1, int[] array2) {
-        int[] sum = new int[array1.length]; // создаем новый массив
+        if(array1.length != array2.length) {
+            System.err.println("Складывать матрицы разных размеров нельзя");
+        }
+
+        int len = array1.length <= array2.length ? array1.length : array2.length; // выбираем наименьшую длину
+        int[] sum = new int[len]; // создаем новый массив
 
         for(int j=0;j<sum.length;j++){           // повторяем для каждого элемента
             sum[j] = array1[j] + array2[j];  // суммируем элементы под индексом j двух массивов
